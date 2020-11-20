@@ -38,7 +38,7 @@ CREATE TABLE comments
     score       integer      NOT NULL,
     text        TEXT DEFAULT NULL,
     clothing_id varchar(255) NOT NULL,
-    user_id  varchar(255) NOT NULL,
+    user_id     varchar(255) NOT NULL,
     PRIMARY KEY (id, user_id),
     FOREIGN KEY (user_id) REFERENCES user (email),
     FOREIGN KEY (clothing_id) REFERENCES clothing (id)
@@ -46,11 +46,13 @@ CREATE TABLE comments
 
 CREATE TABLE in_cart
 (
-    user_id varchar(255) NOT NULL,
+    user_id    varchar(255) NOT NULL,
     variety_id varchar(255) NOT NULL,
+    clothing_id varchar(255) NOT NULL,
     count      integer      NOT NULL,
-    PRIMARY KEY (user_id, variety_id),
-    FOREIGN KEY (user_id) REFERENCES user (email)
+    PRIMARY KEY (user_id, variety_id, clothing_id),
+    FOREIGN KEY (user_id) REFERENCES user (email),
+    FOREIGN KEY (clothing_id) REFERENCES clothing (id)
 );
 
 CREATE TABLE driver
@@ -106,7 +108,7 @@ INSERT INTO variety
 VALUES ('sub_cloth_id', 'brown', 'XL', 1000000, 'shk1001');
 
 INSERT INTO in_cart
-VALUES ('mmd@mmd.mmd', 'sub_cloth_id', 100);
+VALUES ('mmd@mmd.mmd', 'sub_cloth_id', 'shk1001', 100);
 
 INSERT INTO comments
 VALUES ('first_comment_id', 5, 'toosh gom mishe adadm', 'shk1001', 'mmd@mmd.mmd');
