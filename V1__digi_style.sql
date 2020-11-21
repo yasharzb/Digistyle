@@ -36,6 +36,7 @@ CREATE TABLE comments
 (
     id          varchar(255) NOT NULL,
     score       integer      NOT NULL,
+    CHECK (1 <= score AND score <= 5),
     text        TEXT DEFAULT NULL,
     clothing_id varchar(255) NOT NULL,
     user_id     varchar(255) NOT NULL,
@@ -111,7 +112,7 @@ INSERT INTO in_cart
 VALUES ('mmd@mmd.mmd', 'sub_cloth_id', 'shk1001', 100);
 
 INSERT INTO comments
-VALUES ('first_comment_id', 5, 'toosh gom mishe adadm', 'shk1001', 'mmd@mmd.mmd');
+VALUES ('first_comment_id_2', 5, 'toosh gom mishe adadm', 'shk1001', 'mmd@mmd.mmd');
 
 INSERT INTO driver
 VALUES ('hasan', 'kachal', '82b34522', '9123456789', '0123456789');
