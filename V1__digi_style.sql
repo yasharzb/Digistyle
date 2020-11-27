@@ -122,3 +122,28 @@ VALUES (385928, '2020-11-15', '2', '1', 'tx123', 'mmd@mmd.mmd');
 
 INSERT INTO product_order_variety
 VALUES (385928, 'sub_cloth_id', 'shk1001');
+
+
+INSERT INTO user
+VALUES ('yashar', 'yashar@yashar.yashar', 'yashar', NULL, '9391234567', 'yashar');
+
+INSERT INTO clothing
+VALUES ('blz20', 'blouse_majlesi', 'mr seller', 'balapoosh', 2000);
+
+INSERT INTO variety
+VALUES ('kinda_id', 'blue', 'L', 200, 'blz20');
+
+INSERT INTO in_cart
+VALUES ('yashar@yashar.yashar', 'kinda_id', 5);
+
+INSERT INTO comments
+VALUES ('second_comment_id', 3, 'goshad bud', 'blz20', 'yashar@yashar.yashar');
+
+INSERT INTO schedule
+VALUES ('tx456', '2020-11-26', 5, '0123456789');
+
+INSERT INTO product_order
+VALUES (385928, '2020-11-15', '2', '1', 'tx123', 'mmd@mmd.mmd');
+
+INSERT INTO product_order_variety
+VALUES (385928, 'sub_cloth_id', 'shk1001');
