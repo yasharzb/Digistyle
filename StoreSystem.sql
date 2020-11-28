@@ -259,10 +259,11 @@ FROM item
 WHERE Staus = 'Completed'
 GROUP BY UserEmail;
 
-SELECT *
+SELECT item.*, AVG(Score) AS AverageScore
 FROM item
          JOIN comment c on item.Id = c.ItemId
-ORDER BY Score DESC
+GROUP BY ItemId
+ORDER BY AverageScore DESC
 LIMIT 5;
 
 SELECT DISTINCT FirstName, LastName
@@ -278,7 +279,7 @@ WHERE Quantity = 0;
 SELECT *
 FROM user
          JOIN saleOrder sO on user.Email = sO.UserEmail
-WHERE OrderDate > '1399-08-20'
+WHERE OrderDate = '1399-08-19'
   AND Staus = 'Registered';
 
 SELECT *
