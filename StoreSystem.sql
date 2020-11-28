@@ -3,6 +3,8 @@ create database db_HW2_2;
 
 use db_HW2_2;
 
+SET @MAX_CAPACITY = 10;
+
 CREATE TABLE `user`
 (
     `Email`     varchar(128) primary key not null,
@@ -54,7 +56,7 @@ CREATE TABLE `transport`
 (
     `Id`            varchar(10) primary key not null,
     `TransportDate` DATE                    not null,
-    `Capacity`      INT                     not null,
+    `Capacity`      INT                     default @MAX_CAPACITY,
     `DriverID`      char(10)                not null,
     FOREIGN KEY (DriverID) REFERENCES driver (NationalId) ON UPDATE CASCADE ON DELETE CASCADE
 
@@ -270,7 +272,8 @@ SELECT DISTINCT FirstName, LastName
 FROM driver
          JOIN transport t on driver.NationalId = t.DriverID
          JOIN saleOrder sO on t.Id = sO.TransportID
-WHERE Capacity > 0;
+GROUP BY driver.NationalId
+HAVING SUM(Capacity) > 0;
 
 SELECT Id, Size, Color
 FROM variety_item
