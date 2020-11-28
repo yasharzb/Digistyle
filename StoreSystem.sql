@@ -265,10 +265,11 @@ FROM item
 ORDER BY Score DESC
 LIMIT 5;
 
-SELECT FirstName, LastName
+SELECT DISTINCT FirstName, LastName
 FROM driver
          JOIN transport t on driver.NationalId = t.DriverID
-WHERE Capacity != 0;
+         JOIN saleOrder sO on t.Id = sO.TransportID
+WHERE Capacity > 0;
 
 SELECT Id, Size, Color
 FROM variety_item
@@ -277,7 +278,7 @@ WHERE Quantity = 0;
 SELECT *
 FROM user
          JOIN saleOrder sO on user.Email = sO.UserEmail
-WHERE OrderDate > '1399-08-21'
+WHERE OrderDate > '1399-08-20'
   AND Staus = 'Registered';
 
 SELECT *
